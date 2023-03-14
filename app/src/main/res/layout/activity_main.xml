@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:ignore="ExtraText">
 
 
     <TextView
@@ -18,7 +19,8 @@
         android:textSize="35dp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="59dp" />
+        tools:layout_editor_absoluteY="59dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/sing1"
@@ -31,7 +33,8 @@
         android:textColor="@color/black"
         android:text=" Sign In"
         tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="186dp"/>
+        tools:layout_editor_absoluteY="186dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/Useremail"
@@ -47,10 +50,11 @@
         android:drawableLeft="@drawable/baseline_person_outline_24"
         android:drawablePadding="20dp"
         tools:layout_editor_absoluteX="97dp"
-        tools:layout_editor_absoluteY="289dp" />
+        tools:layout_editor_absoluteY="289dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/Password"
+        android:id="@+id/password"
         android:layout_below="@id/sing1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,15 +66,24 @@
         android:hint="Password:"
         android:drawableLeft="@drawable/baseline_info_24"
         android:drawablePadding="20dp"
+        android:inputType="textPassword"
         tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="381dp" />
+        tools:layout_editor_absoluteY="381dp"
+        tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/sing1"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter"
+        android:layout_below="@id/password"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/design_default_color_secondary"
+        android:layot_centerHorizontal="true"
+        android:text="LogIn"
+
         tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="505dp" />
+        tools:layout_editor_absoluteY="503dp"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
