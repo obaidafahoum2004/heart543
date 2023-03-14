@@ -17,12 +17,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView Useremail=(TextView) findViewById(R.id.Useremail);
-        TextView Password=(TextView) findViewById(R.id.password);
+        TextView Useremail = (TextView) findViewById(R.id.Useremail);
+        TextView Password = (TextView) findViewById(R.id.password);
 
-        MaterialButton loginbtn = (MaterialButton)findViewById(R.id.loginbtn);
+        MaterialButton loginbtn = (MaterialButton) findViewById(R.id.loginbtn);
         // admin & admin
-        return loginbtn.setOnClickListener(new View.OnClickListener() {
+        loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (Useremail.getText().toString().equals("admin") && Password.getText().toString().equals("admin")) {
@@ -33,9 +33,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "LogIn Failed", Toast.LENGTH_SHORT).show();
                 }
             }
-        }
-                ;
-    });
+        });
 
-    }
-}
+    }}
+
+
