@@ -3,11 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".signoutFragment">
-
+    tools:context=".LoginFragment">
 
     <TextView
-        android:id="@+id/heartreaderSignout"
+        android:id="@+id/heartreader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="50dp"
@@ -21,7 +20,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/sing1Signout"
+        android:id="@+id/sing1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
@@ -29,13 +28,14 @@
         android:textStyle="bold"
         android:textSize="25dp"
         android:textColor="@color/black"
-        android:text=" Sign up"
+        android:text=" Sign In"
         tools:layout_editor_absoluteX="176dp"
         tools:layout_editor_absoluteY="186dp"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/UseremailSignout"
+        android:id="@+id/Useremail"
+        android:layout_below="@id/sing1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#30ffffff"
@@ -51,7 +51,8 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/passwordSignout"
+        android:id="@+id/password"
+        android:layout_below="@id/sing1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#30ffffff"
@@ -68,16 +69,18 @@
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginbtnSignout"
+        android:id="@+id/loginbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/password"
         android:layout_margin="20dp"
         android:backgroundTint="@color/design_default_color_secondary"
         android:layot_centerHorizontal="true"
-        android:text="sign out"
+        android:text="LogIn"
 
         tools:layout_editor_absoluteX="161dp"
         tools:layout_editor_absoluteY="503dp"
         tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
