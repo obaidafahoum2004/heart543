@@ -61,4 +61,20 @@ public class signoutFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_signout, container, false);
     }
+
+    public String getmParam2() {
+        return mParam2;
+    }
+
+    public void setmParam2(String mParam2) {
+        this.mParam2 = mParam2;
+    }
+
+    public String getmParam1() {
+        return mParam1;
+    }
+
+    public void setmParam1(String mParam1) {
+        this.mParam1 = mParam1;
+    }
 }

@@ -2,11 +2,18 @@ package com.example.heartreader;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +21,11 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class LoginFragment extends Fragment {
+
+    private FirebaseServices fbs;
+    private EditText etEmail,etpassword;
+    private Button btnLogin;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,5 +72,46 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false);
+    }
+
+    public String getmParam1() {
+        return mParam1;
+    }
+
+    public String getmParam2() {
+        return mParam2;
+    }
+
+    public void setmParam2(String mParam2) {
+        this.mParam2 = mParam2;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        etEmail=getActivity().findViewById(R.id.etUseremail);
+        etpassword=getActivity().findViewById(R.id.etPassword);
+        btnLogin=getActivity().findViewById(R.id.loginbtn);
+        fbs=FirebaseServices.getInstance();
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email,pass;
+                email=etEmail.getText().toString();
+                pass=etpassword.getText().toString();
+                fbs.getAuth().signInWithEmailAndPassword(email, pass)
+                        .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // PUT YOUR CODE HERE
+                                } else {
+                                    // PUT YOUR CODE HERE\
+
+                                }
+                            }
+                        });
+            }
+        });
     }
 }
