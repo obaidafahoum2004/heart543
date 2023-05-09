@@ -17,12 +17,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        gotoLoginFragment();  // TODO: add code the takes you to Login
+
+
+    }
+
+    private void gotoLoginFragment() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frameMain, new LoginFragment());
         ft.commit();
-        // TODO: add code the takes you to Login
-
-
-    }}
+    }
+}
 
 

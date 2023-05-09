@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link signoutFragment#newInstance} factory method to
+ * Use the {@link forgotPass#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class signoutFragment extends Fragment {
+public class forgotPass extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class signoutFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public signoutFragment() {
+    public forgotPass() {
         // Required empty public constructor
     }
 
@@ -34,11 +34,11 @@ public class signoutFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment signoutFragment.
+     * @return A new instance of fragment forgotPass.
      */
     // TODO: Rename and change types and number of parameters
-    public static signoutFragment newInstance(String param1, String param2) {
-        signoutFragment fragment = new signoutFragment();
+    public static forgotPass newInstance(String param1, String param2) {
+        forgotPass fragment = new forgotPass();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,22 +59,6 @@ public class signoutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_signout, container, false);
-    }
-
-    public String getmParam2() {
-        return mParam2;
-    }
-
-    public void setmParam2(String mParam2) {
-        this.mParam2 = mParam2;
-    }
-
-    public String getmParam1() {
-        return mParam1;
-    }
-
-    public void setmParam1(String mParam1) {
-        this.mParam1 = mParam1;
+        return inflater.inflate(R.layout.fragment_forgot_pass, container, false);
     }
 }

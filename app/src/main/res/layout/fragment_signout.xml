@@ -1,60 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".signoutFragment">
+    tools:context=".SignupFragment">
 
-
-    <TextView
-        android:id="@+id/heartreaderSignout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:gravity="center"
-        android:text="The Heart Reader"
-        android:textColor="@color/black"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="59dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/sing1Signout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="25dp"
-        android:textColor="@color/black"
-        android:text=" Sign up"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="186dp"
-        tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/etemail"
-        android:layout_width="match_parent"
+        android:id="@+id/etpass1"
+        android:layout_width="308dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="#30ffffff"
-        android:drawableLeft="@drawable/baseline_person_outline_24"
-        android:drawablePadding="20dp"
-        android:hint="User Email:"
-        android:padding="20dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-11dp"
-        tools:layout_editor_absoluteY="245dp" />
-
-    <EditText
-        android:id="@+id/etpass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="24dp"
         android:background="#30ffffff"
         android:drawableLeft="@drawable/baseline_info_24"
         android:drawablePadding="20dp"
@@ -63,15 +22,68 @@
         android:padding="20dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="333dp" />
+        app:layout_constraintBottom_toTopOf="@+id/etconpass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etemail1"
+        tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnsignup"
+        android:layout_width="137dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="66dp"
+        android:layout_marginEnd="69dp"
+        android:backgroundTint="@color/design_default_color_secondary"
+        android:text="sign up"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnlogin"
+        app:layout_constraintEnd_toStartOf="@+id/btnlogin"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/sing1Signout"
+        android:layout_width="349dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="35dp"
+        android:gravity="center"
+        android:text=" Sign up"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/etemail1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/heartreaderSignout"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/heartreaderSignout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="66dp"
+        android:layout_marginBottom="38dp"
+        android:gravity="center"
+        android:text="The Heart Reader"
+        android:textColor="@color/black"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sing1Signout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/etconpass"
-        android:layout_width="match_parent"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="57dp"
         android:background="#30ffffff"
         android:drawableLeft="@drawable/baseline_info_24"
         android:drawablePadding="20dp"
@@ -80,21 +92,44 @@
         android:padding="20dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="426dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnlogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etpass1"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/etemail1"
+        android:layout_width="311dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="53dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="21dp"
+        android:background="#30ffffff"
+        android:drawableLeft="@drawable/baseline_person_outline_24"
+        android:drawablePadding="20dp"
+        android:hint="User Email:"
+        android:inputType="textEmailAddress"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/etpass1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sing1Signout"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginbtnSignout"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnlogin"
+        android:layout_width="112dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:backgroundTint="@color/design_default_color_secondary"
-        android:layot_centerHorizontal="true"
-        android:text="sign out"
-
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="153dp"
-        tools:layout_editor_absoluteY="535dp" />
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="143dp"
+        android:text="Login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnsignup"
+        app:layout_constraintTop_toBottomOf="@+id/etconpass"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

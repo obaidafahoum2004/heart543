@@ -4,12 +4,14 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,7 +26,7 @@ public class LoginFragment extends Fragment {
 
     private FirebaseServices fbs;
     private EditText etEmail,etpassword;
-    private Button btnLogin;
+    private Button btnLogin,btnup;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -89,9 +91,21 @@ public class LoginFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        connenctcomponents();
+    }
+
+    private void connenctcomponents() {
+
         etEmail=getActivity().findViewById(R.id.etUseremail);
         etpassword=getActivity().findViewById(R.id.etPassword);
-        btnLogin=getActivity().findViewById(R.id.loginbtn);
+        btnLogin=getActivity().findViewById(R.id.btnlog);
+        btnup=getActivity().findViewById(R.id.btnup);
+        btnup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoSignupFragment();
+            }
+        });
         fbs=FirebaseServices.getInstance();
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,14 +113,18 @@ public class LoginFragment extends Fragment {
                 String email,pass;
                 email=etEmail.getText().toString();
                 pass=etpassword.getText().toString();
+                if (email.trim().isEmpty() && pass.trim().isEmpty()) {
+                    Toast.makeText(getActivity(), "some fields are empty!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 fbs.getAuth().signInWithEmailAndPassword(email, pass)
                         .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    // PUT YOUR CODE HERE
+                                    Toast.makeText(getActivity(), "you have successfully logged in", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    // PUT YOUR CODE HERE\
+                                    Toast.makeText(getActivity(), "Failed to log in", Toast.LENGTH_SHORT).show();
 
                                 }
                             }
@@ -114,4 +132,11 @@ public class LoginFragment extends Fragment {
             }
         });
     }
+
+    private void gotoSignupFragment() {
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frameMain, new SignupFragment());
+        ft.commit();
+    }
+
 }
