@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "761792234781",
+    "project_id": "heart-reader",
+    "storage_bucket": "heart-reader.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761792234781:android:3f057f705f19f354fecdf4",
+        "android_client_info": {
+          "package_name": "com.example.heartreader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "761792234781-9kn92pgju6g1mc7emp249or4tf0ji630.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfjk0VKxus1gbrFVhgr7VzacubcdZE41U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "761792234781-9kn92pgju6g1mc7emp249or4tf0ji630.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

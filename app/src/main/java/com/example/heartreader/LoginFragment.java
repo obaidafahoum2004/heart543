@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,7 @@ import com.google.firebase.auth.AuthResult;
  */
 public class LoginFragment extends Fragment {
 
+    private TextView forgot;
     private FirebaseServices fbs;
     private EditText etEmail,etpassword;
     private Button btnLogin,btnup;
@@ -100,6 +102,13 @@ public class LoginFragment extends Fragment {
         etpassword=getActivity().findViewById(R.id.etPassword);
         btnLogin=getActivity().findViewById(R.id.btnlog);
         btnup=getActivity().findViewById(R.id.btnup);
+
+        forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoForgotPassword();
+            }
+        });
         btnup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,6 +145,11 @@ public class LoginFragment extends Fragment {
     private void gotoSignupFragment() {
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frameMain, new SignupFragment());
+        ft.commit();
+    }
+    public void gotoForgotPassword(){
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frameMain, new Forgotpassword());
         ft.commit();
     }
 
