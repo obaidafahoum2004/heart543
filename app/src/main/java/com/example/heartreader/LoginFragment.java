@@ -102,6 +102,7 @@ public class LoginFragment extends Fragment {
         etpassword=getActivity().findViewById(R.id.etPassword);
         btnLogin=getActivity().findViewById(R.id.btnlog);
         btnup=getActivity().findViewById(R.id.btnup);
+        forgot = getActivity().findViewById(R.id.forgotpassword);
 
         forgot.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +120,7 @@ public class LoginFragment extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String email,pass;
                 email=etEmail.getText().toString();
                 pass=etpassword.getText().toString();
@@ -132,6 +134,7 @@ public class LoginFragment extends Fragment {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(getActivity(), "you have successfully logged in", Toast.LENGTH_SHORT).show();
+                                    gotoprof();
                                 } else {
                                     Toast.makeText(getActivity(), "Failed to log in", Toast.LENGTH_SHORT).show();
 
@@ -150,6 +153,11 @@ public class LoginFragment extends Fragment {
     public void gotoForgotPassword(){
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frameMain, new Forgotpassword());
+        ft.commit();
+    }
+    private void gotoprof() {
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frameMain, new prof());
         ft.commit();
     }
 

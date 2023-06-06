@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
  * create an instance of this fragment.
  */
 public class SignupFragment extends Fragment {
-    private Button signUp, logIn ;
+    private Button signUp ;
     EditText Password , Email , Cpassword ;
     private FirebaseServices fbs;
 
@@ -81,18 +81,10 @@ public class SignupFragment extends Fragment {
 
     private void connenctcomponents() {
         signUp = getView().findViewById(R.id.btnsignup) ;
-        logIn = getView().findViewById(R.id.btnlogin);
         Email = getView().findViewById(R.id.etemail1) ;
         Password = getView().findViewById(R.id.etpass1) ;
         Cpassword = getView().findViewById(R.id.etconpass) ;
         fbs = FirebaseServices.getInstance();
-
-        logIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gotoLoginFragment();
-            }
-        });
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,23 +115,22 @@ public class SignupFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getActivity(), "welcome to the new world", Toast.LENGTH_SHORT).show();
-                            return;
+                            gotoprof();
                         } else {
                             Toast.makeText(getActivity(), "Wrong email or password", Toast.LENGTH_SHORT).show();
-                            return;
                         }
                     }
                 });
 
-
             }
+
         });
 
     }
 
-    private void gotoLoginFragment() {
+    private void gotoprof() {
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frameMain, new LoginFragment());
+        ft.replace(R.id.frameMain, new SignupFragment());
         ft.commit();
     }
 
@@ -153,5 +144,6 @@ public class SignupFragment extends Fragment {
 
         return matcher.matches();
     }
+
 
 }

@@ -89,6 +89,7 @@ public class Forgotpassword extends Fragment {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 fbs.getAuth().sendPasswordResetEmail(email.getText().toString()).addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -107,7 +108,7 @@ public class Forgotpassword extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.frameLayoutMain, new LoginFragment());
+                ft.replace(R.id.frameMain, new LoginFragment());
                 ft.commit();
             }
         });
