@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,6 +28,7 @@ import java.util.regex.Pattern;
  */
 public class SignupFragment extends Fragment {
     private Button signUp ;
+    private ImageView gobackimg;
     EditText Password , Email , Cpassword ;
     private FirebaseServices fbs;
 
@@ -79,13 +81,21 @@ public class SignupFragment extends Fragment {
         connenctcomponents();
     }
 
+
     private void connenctcomponents() {
         signUp = getView().findViewById(R.id.btnsignup) ;
         Email = getView().findViewById(R.id.etemail1) ;
         Password = getView().findViewById(R.id.etpass1) ;
         Cpassword = getView().findViewById(R.id.etconpass) ;
+        gobackimg=getView().findViewById(R.id.gobackimg);
         fbs = FirebaseServices.getInstance();
 
+        gobackimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotologin();
+            }
+        });
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,6 +138,11 @@ public class SignupFragment extends Fragment {
 
     }
 
+    private void gotologin(){
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frameMain, new LoginFragment());
+        ft.commit();
+    }
     private void gotoprof() {
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frameMain, new SignupFragment());
