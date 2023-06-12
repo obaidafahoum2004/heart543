@@ -27,13 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
         gotoLoginFragment();  // TODO: add code the takes you to Login
 
-
-
     }
 
     private void gotoLoginFragment() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frameMain, new LoginFragment());
+        ft.replace(R.id.frameMain, new prof());
         ft.commit();
     }
 }

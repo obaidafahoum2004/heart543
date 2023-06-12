@@ -40,7 +40,7 @@
             tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/done"
+            android:id="@+id/BTNDone"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="68dp"
@@ -65,7 +65,7 @@
             android:inputType="phone"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/done"
+            app:layout_constraintBottom_toTopOf="@+id/BTNDone"
             app:layout_constraintStart_toStartOf="@+id/etnickname"
             app:layout_constraintTop_toBottomOf="@+id/etnickname"
             tools:ignore="MissingConstraints" />
@@ -77,8 +77,8 @@
             android:layout_marginEnd="1dp"
             android:layout_marginBottom="26dp"
             android:ems="10"
+            android:hint="Nickname: "
             android:inputType="textPersonName"
-            android:text="Nickname: "
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/etphone"

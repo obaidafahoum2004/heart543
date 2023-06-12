@@ -37,8 +37,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViweHolder> {
         holder.Name.setText(user.getName());
         holder.Nickname.setText(user.getNickname());
         holder.Phone.setText(user.getPhone());
-        holder.Email.setText(user.getEmail());
-        holder.Password.setText(user.getPassword());
 
     }
 
@@ -58,8 +56,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViweHolder> {
             Name=itemView.findViewById(R.id.tvName);
             Nickname=itemView.findViewById(R.id.tvNickName);
             Phone=itemView.findViewById(R.id.tvPhone);
-            Email=itemView.findViewById(R.id.tvEmail);
-            Password=itemView.findViewById(R.id.tvPassword);
             userPhoto=itemView.findViewById(R.id.userphoto);
 
 

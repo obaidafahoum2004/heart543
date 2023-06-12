@@ -1,14 +1,41 @@
 package com.example.heartreader;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
+import java.util.UUID;
+import com.google.firebase.database.DatabaseReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +45,15 @@ import android.widget.ImageView;
 public class prof extends Fragment {
     private EditText name,nickname,phone;
     private ImageView img;
+    private Button btn;
+    FirebaseServices fbs ;
+    private final int galerry = 1000;
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private DatabaseReference mDatabase;
+    Uri imageUri;
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+
+    StorageReference storageRef = storage.getReference();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -74,8 +110,73 @@ public class prof extends Fragment {
     private void connenctcomponents() {
         name=getActivity().findViewById(R.id.etusername);
         phone=getActivity().findViewById(R.id.etphone);
-
         img=getActivity().findViewById(R.id.userimg);
-        
+        fbs = FirebaseServices.getInstance() ;
+        btn= getActivity().findViewById(R.id.BTNDone);
+
+
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, PICK_IMAGE_REQUEST);
+            }
+        });
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(name.getText().toString().isEmpty() || nickname.getText().toString().isEmpty() || phone.getText().toString().isEmpty())
+                {
+                    Toast.makeText(getActivity(), "fill everything", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String path = uploadImageToFirebaseStorage();
+                if (path == null)
+                    return;
+                User user = new User(name.getText().toString() , nickname.getText().toString() , phone.getText().toString() , path);
+                fbs.getFire().collection("Users").add(user).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                        Toast.makeText(getActivity(), "good", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getActivity(), "bad", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            // Get the selected image's URI
+            imageUri = data.getData();
+            img.setImageURI(imageUri);
+            // Do something with the imageUri, such as upload it to Firebase Storage
+        }
+    }
+
+    private String uploadImageToFirebaseStorage() {
+        BitmapDrawable drawable = (BitmapDrawable) img.getDrawable();
+        Bitmap Image = drawable.getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        Image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data = baos.toByteArray();
+        StorageReference ref = fbs.getStorage().getReference("listingPictures/" + UUID.randomUUID().toString());
+        UploadTask uploadTask = ref.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w(TAG, "Error with the picture", e);
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+            }
+        });
+        return ref.getPath();
     }
 }

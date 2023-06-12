@@ -2,22 +2,13 @@ package com.example.heartreader;
 
 public class User {
 
-    private String email, password, name, nickname, phone, userimg;
+    private String name, nickname, phone, userimg;
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public User(String name, String nickname, String phone, String userimg) {
+        this.name = name;
+        this.nickname = nickname;
+        this.phone = phone;
+        this.userimg = userimg;
     }
 
     public String getName() {
@@ -55,8 +46,6 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "email='" + email + '\'' +
-                ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", phone='" + phone + '\'' +
